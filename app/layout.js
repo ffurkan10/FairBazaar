@@ -1,14 +1,17 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Poppins } from "next/font/google";
+import { CartProvider } from "@/context/CartContext";
+import { OrderProvider } from "@/context/OrderContext";
+import { AuthProvider } from "@/context/AuthContext";
 import "./globals.css";
+import Header from "@/components/layout/Header";
+import { ProductProvider } from "@/context/ProductContext";
+import Footer from "@/components/layout/Footer";
+import { FavoriteProvider } from "@/context/FavoriteContext";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const poppins = Poppins({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-poppins",
 });
 
 export const metadata = {
@@ -20,9 +23,21 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${poppins.variable} antialiased`}
       >
-        {children}
+        <AuthProvider>
+          <ProductProvider>
+            <CartProvider>
+              <FavoriteProvider>
+                <OrderProvider>
+                  <Header />
+                  <main>{children}</main>
+                  <Footer />
+                </OrderProvider>
+              </FavoriteProvider>
+            </CartProvider>
+          </ProductProvider>
+        </AuthProvider>
       </body>
     </html>
   );
