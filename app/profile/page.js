@@ -5,15 +5,9 @@ import ProfileSettingCard from '@/components/ui/cards/ProfileSettingCard';
 import Breadcrumbs from '@/components/breadcrumb';
 import AddressCard from '@/components/ui/cards/AddressCard';
 import LogoutButton from '@/components/ui/buttons/LogoutButton';
-import { getOrders } from '@/lib/api';
 import OrderContainer from '@/components/containers/OrderContainer';
 
-const Profile = async () => {
-
-  const {data} = await getOrders()
-
-  console.log("data:", data.length);
-  
+const Profile = () => {
 
   return (
     <div className='container'>
