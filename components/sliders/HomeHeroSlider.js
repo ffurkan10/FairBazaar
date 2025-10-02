@@ -6,8 +6,7 @@ import hero from "@/public/assets/png/banner.png"
 import hero2 from "@/public/assets/png/banner-2.jpg"
 import hero3 from "@/public/assets/png/banner-3.jpg"
 
-const HomeHeroSlider = () => {
-  const slides = [
+ const slides = [
     {
       id: 1,
       img: hero,
@@ -25,8 +24,10 @@ const HomeHeroSlider = () => {
     },
   ];
 
+const HomeHeroSlider = () => {
+
   return (
-    <div className="w-full h-[400px] rounded-lg overflow-hidden">
+    <div className="w-full rounded-lg overflow-hidden">
       <Swiper
         modules={[Pagination, Autoplay]}
         pagination={{ clickable: true }}
@@ -36,12 +37,12 @@ const HomeHeroSlider = () => {
       >
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
-            <div className="relative w-full h-[400px]">
+            <div className="relative w-full aspect-[16/9]">
               <Image
                 src={slide.img}
                 alt={slide.alt}
                 fill
-                className="object-cover"
+                className="object-cover object-center"
               />
             </div>
           </SwiperSlide>
