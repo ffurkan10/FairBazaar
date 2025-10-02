@@ -7,7 +7,7 @@ import Link from 'next/link';
 const ProductCard = ({item}) => {
 
   return (
-    <div className="relative flex flex-col justify-between gap-6 p-4 rounded-lg shadow-[var(--shadow-custom)] w-full h-full bg-white border border-transparent hover:border-[var(--primary)] transition">
+    <div className="relative flex flex-col justify-between sm:gap-6 gap-3 p-4 rounded-lg shadow-[var(--shadow-custom)] w-full h-full bg-white border border-transparent hover:border-[var(--primary)] transition">
         <div className="flex items-center gap-1 absolute top-0 right-0 bg-[var(--background)] px-2 py-1 rounded-bl-lg rounded-tr-lg">
             <FaStar size={16} className="text-[var(--yellow)]" />
             <span className="text-sm font-light opacity-70">( {item.rating.count} )</span>
