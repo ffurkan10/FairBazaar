@@ -5,7 +5,6 @@ import { createContext, useContext, useEffect, useState } from "react";
 const ProductContext = createContext();
 
 export function ProductProvider({ children }) {
-  const filters = ["all", "electronics", "jewelery", "men's clothing", "women's clothing"];
   const [products, setProducts] = useState([]);
   const [selectedFilter, setSelectedFilter] = useState({
         id: 0,
@@ -14,6 +13,7 @@ export function ProductProvider({ children }) {
     });
   const [isLoading, setIsLoading] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -33,7 +33,6 @@ export function ProductProvider({ children }) {
   return (
     <ProductContext.Provider
       value={{
-        filters,
         selectedFilter,
         setSelectedFilter,
         filteredProducts,
@@ -42,6 +41,8 @@ export function ProductProvider({ children }) {
         products,
         isLoading,
         setIsLoading,
+        selectedProduct,
+        setSelectedProduct,
       }}
     >
       {children}

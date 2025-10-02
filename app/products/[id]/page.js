@@ -4,15 +4,15 @@ import { getProductById } from '@/lib/api';
 import Image from 'next/image';
 import React from 'react'
 import { FaStar } from 'react-icons/fa';
-import { FaRegHeart } from "react-icons/fa";
 import ReviewSummary from '@/components/chart/ReviewSummary';
 import FavoriteButton from '@/components/ui/buttons/FavoriteButton';
-import GetServerSide from '@/lib/getServerSide';
+import Button from '@/components/ui/buttons/Button';
+import ProductUserAndWishControl from '@/components/product/ProductUserAndWishControl';
 
 export async function generateMetadata({ params }) {
   const { id } = await params
 
-  const productDetail = await GetServerSide(`https://fakestoreapi.com/products/${id}`);
+  const {productDetail} = await getProductById(id);
 
   if(productDetail === null){
     return {
@@ -31,7 +31,7 @@ export async function generateMetadata({ params }) {
 const ProductDetail = async ({params}) => {
   const { id } = await params
 
-  const data = await GetServerSide(`https://fakestoreapi.com/products/${id}`);
+  const {data} = await getProductById(id);
 
   return (
     <div className='container'>
@@ -49,16 +49,12 @@ const ProductDetail = async ({params}) => {
               <span className='text-sm font-light opacity-70'>( {data?.rating.count} )</span>
             </div>
           </div>
-          <p className='text-md font-light'>{data?.description}</p>
+          <p className='text-sm font-light'>{data?.description}</p>
           <p className='text-3xl font-bold'>${data?.price}</p>
 
-          <div className='flex items-center gap-4 w-full'>
-            <AddToCartButton width='w-full' item={data} text={"Add to Cart"} />
-            <FavoriteButton item={data} />
-          </div>
+          <ProductUserAndWishControl data={data} />
         </div>
       </div>
-
 
       <div className='mt-20 flex flex-col gap-6'>
         <h2 className='text-xl font-bold'>Customer Reviews</h2>

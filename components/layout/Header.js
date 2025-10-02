@@ -21,7 +21,7 @@ const Header = () => {
         {/* sol */}
         <div className="flex items-center gap-10">
           <Link href="/" className="text-xl font-bold py-2 relative z-50">
-            MyShop
+            FairBazaar
           </Link>
           <div className="md:flex gap-6 hidden">
             <Link href="/products" className="hover:bg-[var(--hover-dark)] transition-colors p-2 rounded-lg">

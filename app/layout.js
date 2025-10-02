@@ -7,6 +7,9 @@ import Header from "@/components/layout/Header";
 import { ProductProvider } from "@/context/ProductContext";
 import Footer from "@/components/layout/Footer";
 import { FavoriteProvider } from "@/context/FavoriteContext";
+import { ModalProvider } from "@/context/ModalContext";
+import ModalLayout from "@/layout/ModalLayout";
+import { LayoutProvider } from "@/context/LayoutContext";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -26,17 +29,22 @@ export default function RootLayout({ children }) {
         className={`${poppins.variable} antialiased`}
       >
         <AuthProvider>
-          <ProductProvider>
-            <CartProvider>
-              <FavoriteProvider>
-                <OrderProvider>
-                  <Header />
-                  <main>{children}</main>
-                  <Footer />
-                </OrderProvider>
-              </FavoriteProvider>
-            </CartProvider>
-          </ProductProvider>
+          <ModalProvider>
+            <ProductProvider>
+              <CartProvider>
+                <FavoriteProvider>
+                  <OrderProvider>
+                    <LayoutProvider>
+                      <ModalLayout />
+                      <Header />
+                      <main>{children}</main>
+                      <Footer />
+                    </LayoutProvider>
+                  </OrderProvider>
+                </FavoriteProvider>
+              </CartProvider>
+            </ProductProvider>
+          </ModalProvider>
         </AuthProvider>
       </body>
     </html>

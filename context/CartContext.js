@@ -25,12 +25,9 @@ export function CartProvider({ children }) {
       const syncCart = async () => {
         try {
           const { data } = await getCartByUser(user.id);
-          if (!data || data?.[0]?.products?.length === 0 || !data.length) {
+          if ((!data || data?.[0]?.products?.length === 0 || !data.length) && cart.length > 0) {
             //! Eğer user için db de sepet yoksa localStoragedaki cartı kaydet
             await addNewCart({ userId: user.id, products: cart });
-          } else {
-            //! Eğer db de sepet varsa onu state e al
-            setCart(data[0].products);
           }
         } catch (err) {
           console.error("Sepet senkronizasyon hatası:", err);
