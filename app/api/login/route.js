@@ -45,17 +45,3 @@ export async function GET(req) {
     return NextResponse.json({message: "Internal Server Error"}, {status: 500})
   }
 }
-
-// export async function DELETE() {
-//   const res = NextResponse.json({ message: "Logged out" }, { status: 200 })
-
-//   //! Cookie’yi temizle
-//   res.cookies.set("session", "", {
-//     httpOnly: true,
-//     secure: true,
-//     path: "/",
-//     maxAge: 0, //! hemen sil
-//   })
-
-//   return res
-// }

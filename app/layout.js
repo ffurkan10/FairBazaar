@@ -1,15 +1,9 @@
 import { Poppins } from "next/font/google";
-import { CartProvider } from "@/context/CartContext";
-import { OrderProvider } from "@/context/OrderContext";
-import { AuthProvider } from "@/context/AuthContext";
 import "./globals.css";
 import Header from "@/components/layout/Header";
-import { ProductProvider } from "@/context/ProductContext";
 import Footer from "@/components/layout/Footer";
-import { FavoriteProvider } from "@/context/FavoriteContext";
-import { ModalProvider } from "@/context/ModalContext";
 import ModalLayout from "@/layout/ModalLayout";
-import { LayoutProvider } from "@/context/LayoutContext";
+import { Providers } from "@/providers";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -26,26 +20,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${poppins.variable} antialiased`}
+        className={`${poppins.variable} antialiased min-h-screen flex flex-col`}
       >
-        <AuthProvider>
-          <ModalProvider>
-            <ProductProvider>
-              <CartProvider>
-                <FavoriteProvider>
-                  <OrderProvider>
-                    <LayoutProvider>
-                      <ModalLayout />
-                      <Header />
-                      <main>{children}</main>
-                      <Footer />
-                    </LayoutProvider>
-                  </OrderProvider>
-                </FavoriteProvider>
-              </CartProvider>
-            </ProductProvider>
-          </ModalProvider>
-        </AuthProvider>
+        <Providers>
+          <ModalLayout />
+          <Header />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

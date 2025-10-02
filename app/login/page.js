@@ -5,7 +5,7 @@ import loginImage from '@/public/assets/svg/login.svg'
 
 const Login = () => {
   return (
-    <div className='container h-[50vh] sm:h-screen flex items-center justify-center'>
+    <div className='container h-full pt-10 sm:pt-0 sm:h-screen flex items-center justify-center'>
       <div className='lg:w-[900px] lg:h-[500px] w-full h-auto flex items-center justify-between md:flex-row flex-col gap-10 p-8 rounded-lg shadow-[var(--shadow-custom)] bg-white'>
         <div className='md:w-[400px] w-[200px]'>
           <Image src={loginImage} alt="Login" />
