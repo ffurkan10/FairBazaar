@@ -37,7 +37,7 @@ const HomeHeroSlider = () => {
       >
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
-            <div className="relative w-full aspect-[16/9]">
+            <div className="relative w-full aspect-[16/9] lg:aspect-[21/9]">
               <Image
                 src={slide.img}
                 alt={slide.alt}
