@@ -6,9 +6,9 @@ const ReviewSummary = ({ average, totalReviews, breakdown }) => {
 
   return (
     <div className="flex flex-col gap-10 bg-white rounded-lg shadow p-6 w-full">
-        <div className="flex align-center gap-6">
-            <div className="flex flex-col gap-2 items-center justify-center w-1/4 text-center border-r">
-                <p className="text-4xl font-bold">{average}</p>
+        <div className="flex align-center gap-6 md:flex-row flex-col">
+            <div className="flex flex-col gap-2 items-center justify-center md:w-1/4 w-full pb-4 md:pb-0 text-center md:border-r md:border-b-0 border-b border-[var(--border)]">
+                <p className="sm:text-4xl text-2xl font-bold">{average}</p>
                 <div className="flex text-[var(--yellow)] my-2">
                     {Array(5).fill(0).map((_, i) => (
                         <FaStar
@@ -17,8 +17,8 @@ const ReviewSummary = ({ average, totalReviews, breakdown }) => {
                         />
                     ))}
                 </div>
-                <p className="text-sm text-[var(--light-hover)]">{totalReviews} reviews</p>
-                <p className="text-md text-[var(--primary)] hover:text-[var(--hover-dark)] transition-colors cursor-pointer">View all reviews ({totalReviews})</p>
+                <p className="sm:text-sm text-xs text-[var(--light-hover)]">{totalReviews} reviews</p>
+                <p className="sm:text-md text-sm text-[var(--primary)] hover:text-[var(--hover-dark)] transition-colors cursor-pointer">View all reviews ({totalReviews})</p>
             </div>
 
             <div className="flex flex-col justify-center flex-1 gap-2">
