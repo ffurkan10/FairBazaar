@@ -11,7 +11,7 @@ const CheckoutCard = () => {
     const {user} = useAuth()
     
     return (
-        <div className='sticky top-4 bg-white p-4 rounded-lg shadow-[var(--shadow-custom)] w-full'>
+        <div className='sticky top-[100px] bg-white p-4 rounded-lg shadow-[var(--shadow-custom)] w-full'>
             <p className='text-lg font-semibold mb-4'>Order Summary</p>
             <div className='flex flex-col gap-4'>
                 <div className='flex items-center justify-between'>

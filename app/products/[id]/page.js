@@ -9,7 +9,13 @@ import ProductUserAndWishControl from '@/components/product/ProductUserAndWishCo
 export async function generateMetadata({ params }) {
   const { id } = await params
 
+  console.log("meta id",id);
+  
+
   const {data} = await getProductById(id);
+
+  console.log(data);
+  console.log("meta data",data);
 
   if(data === null){
     return {
@@ -28,7 +34,11 @@ export async function generateMetadata({ params }) {
 const ProductDetail = async ({params}) => {
   const { id } = await params
 
+  console.log("page id",id);
+
   const {data} = await getProductById(id);
+
+  console.log("page data",data);
 
   return (
     <div className='container'>

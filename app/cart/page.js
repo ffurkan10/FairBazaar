@@ -33,8 +33,8 @@ const Cart = () => {
             { user && <AddressCard />}
 
             <div className='flex flex-col bg-white p-4 rounded-lg shadow-[var(--shadow-custom)]'>
-              {cart.map((item) => (
-                <CartCard key={item.id} item={item} />
+              {cart.map((item, key) => (
+                <CartCard key={key} item={item} />
               ))}
             </div>
 
