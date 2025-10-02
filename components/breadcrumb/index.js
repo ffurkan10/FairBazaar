@@ -4,7 +4,7 @@ import { FaChevronRight } from "react-icons/fa6";
 
 const Breadcrumbs = ({ data }) => {
   return (
-    <div className='flex gap-2 pt-6 pb-12'>
+    <div className='flex gap-2 pt-6 sm:pb-12 pb-8'>
       {data.map((item, index) => {
         const isLast = index === data.length - 1
 

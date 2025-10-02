@@ -28,15 +28,14 @@ const Cart = () => {
           <Link href="/" className='text-[var(--primary)] font-semibold text-sm sm:text-md'>Return to Home</Link>
         </div>
       ) : (
-        <div className='flex justify-between flex-col lg:flex-row gap-6 mt-6'>
+        <div className='flex justify-between flex-col lg:flex-row gap-6'>
           <div className='flex flex-col gap-6 lg:w-3/5 w-full'>
             { user && <AddressCard />}
 
-              <div className='flex flex-col bg-white p-4 rounded-lg shadow-[var(--shadow-custom)] w-full'>
-                <p className='text-center text-lg font-semibold'>Your cart is currently empty!</p>
-                <p>{"Looks like you haven't made your choice yet."}</p>
-                <Link href="/" className='text-[var(--primary)] font-semibold'>Return to Home</Link>
-              </div>
+            {cart.map((item) => (
+              <CartCard key={item.id} item={item} />
+            ))}
+
           </div>
 
           <div className='lg:w-1/3 w-full relative'>
