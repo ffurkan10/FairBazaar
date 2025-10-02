@@ -23,13 +23,11 @@ export function FavoriteProvider({ children }) {
     const syncFavorites = async () => {
       if (!user) return;
       try {
-        //! Kullanıcının favorileri yoksa localden alıp apiye kaydetme yeri
-        if (!user.favorites || user.favorites.length === 0) {
-          await updateUser(user.id, { favorites });
-        } else {
-          //! Kullanıcının favorileri varsa api den alıp local e kaydetme yeri
+        //! Kullanıcının favorileri varsa aoiden alıp locale yaz
+        if (user.favorites && user.favorites.length > 0) {
           setFavorites(user.favorites);
         }
+        //! Kullanıcının favorileri yoksa hiçbir şey yapma
       } catch (err) {
         console.error("Error:", err);
       }

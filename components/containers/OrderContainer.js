@@ -13,6 +13,7 @@ const OrderContainer = () => {
     const [showDetails, setShowDetails] = useState(false);
     
     useEffect(() => {
+        if(!user) return;
         const fetchOrders = async () => {
             try {
                 const {data} = await getOrdersByUser(user?.id);
@@ -43,10 +44,10 @@ const OrderContainer = () => {
                             <div key={product.id} className='flex items-center justify-between w-full gap-4 mt-4'>
                                 <div className='flex items-center gap-4'>
                                     <Image width={48} height={48} src={product.image} alt={product.title} className='object-contain' />
-                                    <p className='text-sm'>{product.title}</p>
+                                    <p className='text-xs sm:text-sm'>{product.title}</p>
                                 </div>
                                 <div className='flex flex-col items-end gap-2'>
-                                    <p className='text-sm font-medium'>${parseFloat(product.price).toFixed(2)}</p>
+                                    <p className='text-xs sm:text-sm font-medium'>${parseFloat(product.price).toFixed(2)}</p>
                                     <p className='text-xs text-[var(--light-hover)]'>Qty: {product.quantity}</p>
                                 </div>
                             </div>

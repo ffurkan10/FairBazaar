@@ -7,11 +7,12 @@ import { FaStar } from 'react-icons/fa';
 import { FaRegHeart } from "react-icons/fa";
 import ReviewSummary from '@/components/chart/ReviewSummary';
 import FavoriteButton from '@/components/ui/buttons/FavoriteButton';
+import GetServerSide from '@/lib/getServerSide';
 
 export async function generateMetadata({ params }) {
   const { id } = await params
 
-  const productDetail = await getProductById(id);
+  const productDetail = await GetServerSide(`https://fakestoreapi.com/products/${id}`);
 
   if(productDetail === null){
     return {
@@ -30,7 +31,7 @@ export async function generateMetadata({ params }) {
 const ProductDetail = async ({params}) => {
   const { id } = await params
 
-  const {data} = await getProductById(id);
+  const data = await GetServerSide(`https://fakestoreapi.com/products/${id}`);
 
   return (
     <div className='container'>
