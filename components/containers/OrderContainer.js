@@ -8,23 +8,8 @@ import React, { useEffect, useState } from 'react'
 import { FaChevronRight } from "react-icons/fa6";
 
 const OrderContainer = () => {
-    const {setOrders, orders} = useOrder()
-    const {user} = useAuth()
+    const { orders } = useOrder()
     const [showDetails, setShowDetails] = useState(false);
-    
-    useEffect(() => {
-        if(!user) return;
-        const fetchOrders = async () => {
-            try {
-                const {data} = await getOrdersByUser(user?.id);
-                setOrders(data);
-            } catch (error) {
-                console.error('Error fetching orders:', error);
-            }
-        };
-
-        fetchOrders();
-    }, [user])
 
   return (
     <div className='flex flex-col mt-4'>

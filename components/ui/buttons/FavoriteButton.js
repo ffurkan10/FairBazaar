@@ -8,9 +8,6 @@ const FavoriteButton = ({item, bg='bg-white'}) => {
 
     const { favorites, addToFavorites, removeFromFavorites } = useFavorite();
 
-    console.log(favorites, item);
-    
-
     const isFavorite = favorites.some(favItem => favItem.id === item.id);
 
     const handleFavoriteClick = () => {

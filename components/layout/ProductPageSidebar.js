@@ -9,7 +9,7 @@ const ProductPageSidebar = () => {
     const { setSelectedFilter, selectedFilter, products, setFilteredProducts } = useProduct();
     const [showFilters, setShowFilters] = useState(false);
 
-    //! Filtreleme mantığı
+    //! filtre
     useEffect(() => {
         const filtered = products.filter((item) => {
             if (selectedFilter?.name === "all") return true;
@@ -20,7 +20,7 @@ const ProductPageSidebar = () => {
 
     return (
         <>
-            {/* Pc tarafı */}
+            {/* pc */}
             <div className='sticky top-4 w-[250px] pr-4 h-fit mr-4 hidden lg:block'>
                 <p className='text-lg font-bold mb-4'>Categories</p>
                 <ul className='flex flex-col gap-2'>
@@ -37,7 +37,7 @@ const ProductPageSidebar = () => {
                 </ul>
             </div>
 
-            {/* Mobil tarafı */}
+            {/* Mobil */}
             <div className='w-fit mb-4 lg:hidden'>
                 <div className='w-full'>
                     <div 

@@ -59,8 +59,6 @@ export function CartProvider({ children }) {
     if (user) {
       const userCart = await fetchUserCart(user.id);
       if (userCart) {
-        console.log("Sepet güncelleniyor...", userCart);
-
         await updateCart(userCart.id, { products: [...cart, { ...product, quantity: 1 }] });
       }
     }
