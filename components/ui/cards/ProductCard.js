@@ -15,9 +15,9 @@ const ProductCard = ({item}) => {
         
         <Link href={`/products/${item.id}`} className="flex flex-col gap-4">
             <div className="flex justify-center items-center w-full">
-                <Image src={item.image} alt={item.title} width={200} height={200} className="object-contain md:w-[180px] md:h-[180px] w-[160px] h-[160px] sm:mb-4"/>
+                <Image src={item.image} alt={item.title} width={200} height={200} className="object-contain md:w-[180px] md:h-[180px] w-[140px] h-[140px] sm:mb-4"/>
             </div>
-            <p className="text-md font-bold">{item.title}</p>
+            <p className="sm:text-md text-sm font-bold">{item.title}</p>
         </Link>
 
         <div className="flex items-center justify-start">
