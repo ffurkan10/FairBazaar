@@ -2,7 +2,6 @@ import { useAuth } from '@/context/AuthContext';
 import Link from 'next/link';
 import React from 'react'
 import { FaRegHeart, FaRegUser } from 'react-icons/fa';
-import { IoClose } from 'react-icons/io5'
 
 const NavMobile = ({showMenu, setShowMenu}) => {
     const { user } = useAuth();
