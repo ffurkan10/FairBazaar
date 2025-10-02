@@ -32,9 +32,11 @@ const Cart = () => {
           <div className='flex flex-col gap-6 lg:w-3/5 w-full'>
             { user && <AddressCard />}
 
-            {cart.map((item) => (
-              <CartCard key={item.id} item={item} />
-            ))}
+            <div className='flex flex-col bg-white p-4 rounded-lg shadow-[var(--shadow-custom)]'>
+              {cart.map((item) => (
+                <CartCard key={item.id} item={item} />
+              ))}
+            </div>
 
           </div>
 
