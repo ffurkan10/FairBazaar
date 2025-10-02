@@ -1,28 +1,25 @@
 import Breadcrumbs from '@/components/breadcrumb';
-import AddToCartButton from '@/components/ui/buttons/AddToCartButton';
 import { getProductById } from '@/lib/api';
 import Image from 'next/image';
 import React from 'react'
 import { FaStar } from 'react-icons/fa';
 import ReviewSummary from '@/components/chart/ReviewSummary';
-import FavoriteButton from '@/components/ui/buttons/FavoriteButton';
-import Button from '@/components/ui/buttons/Button';
 import ProductUserAndWishControl from '@/components/product/ProductUserAndWishControl';
 
 export async function generateMetadata({ params }) {
   const { id } = await params
 
-  const {productDetail} = await getProductById(id);
+  const {data} = await getProductById(id);
 
-  if(productDetail === null){
+  if(data === null){
     return {
       title: "Product Detail",
       description: "Product Detail",
     };
   }else{
     return {
-      title: productDetail?.title || "Product Detail",
-      description: productDetail?.description || "Product Detail",
+      title: data?.title || "Product Detail",
+      description: data?.description || "Product Detail",
     };
   }
   
