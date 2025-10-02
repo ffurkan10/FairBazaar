@@ -15,8 +15,8 @@ const SectionHeader = ({ grayTitle, blueTitle, filter }) => {
     </h2>
 
     <Link href="/products" onClick={() => setSelectedFilter(filter)} className="sm:text-sm text-xs font-semibold flex items-center">
-      View All
-      <FaChevronRight className="inline-block ml-1 text-[var(--primary)]" />
+      <span className="hidden sm:inline">View All</span>
+      <FaChevronRight className="inline-block ml-1 text-[var(--primary)]" size={15} />
     </Link>
     </div>
   );
