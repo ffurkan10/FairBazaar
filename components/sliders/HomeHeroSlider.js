@@ -3,6 +3,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import Image from "next/image";
 import hero from "@/public/assets/png/banner.png"
+import hero2 from "@/public/assets/png/banner-2.jpg"
+import hero3 from "@/public/assets/png/banner-3.jpg"
 
 const HomeHeroSlider = () => {
   const slides = [
@@ -13,12 +15,12 @@ const HomeHeroSlider = () => {
     },
     {
       id: 2,
-      img: hero,
+      img: hero2,
       alt: "New Arrivals",
     },
     {
       id: 3,
-      img: hero,
+      img: hero3,
       alt: "Discount Week",
     },
   ];
