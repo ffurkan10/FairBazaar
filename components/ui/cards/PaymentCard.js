@@ -9,7 +9,7 @@ import { useCart } from '@/context/CartContext'
 import { useAuth } from '@/context/AuthContext'
 
 const PaymentCard = () => {
-    const {cart, total, setCheckout, clearCart } = useCart()
+    const {cart, total } = useCart()
     const { createOrder } = useOrder();
     const { user } = useAuth();
 
@@ -19,8 +19,7 @@ const PaymentCard = () => {
             total,
             userId: user.id
         })
-        setCheckout(false);
-        clearCart();
+        
     }
 
   return (
