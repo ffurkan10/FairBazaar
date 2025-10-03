@@ -1,18 +1,14 @@
 import Breadcrumbs from '@/components/breadcrumb';
-import { getProductById } from '@/lib/api';
 import Image from 'next/image';
 import React from 'react'
 import { FaStar } from 'react-icons/fa';
 import ReviewSummary from '@/components/chart/ReviewSummary';
 import ProductUserAndWishControl from '@/components/product/ProductUserAndWishControl';
-import GetProducts from '@/lib/GetProducts';
+import GetServerSide from '@/lib/getServerSide';
 
 export async function generateMetadata({ params }) {
   const { id } = await params
-  const data = await GetProducts(id);
-  
-  console.log("meta id",id);
-  console.log("meta data",data);
+  const data = await GetServerSide(`https://fakestoreapi.com/products/${id}`);
 
   if (!data) {
     return { title: "Product Detail", description: "Product Detail" };
@@ -27,10 +23,9 @@ export async function generateMetadata({ params }) {
 
 const ProductDetail = async ({params}) => {
   const { id } = await params
-  const data = await GetProducts(id);
-
-  console.log("page id",id);
-  console.log("page data",data);
+   //! vercel localhosta ulaşamadığı için fetch hatası veriyor. Bu yüzden server taraflı isteği de kullanmış olmak için GetServerSide kullandım ve diret fakestoreapiye istek attım.
+  //! normalde getProductById kullanılacak.
+  const data = await GetServerSide(`https://fakestoreapi.com/products/${id}`);
 
   return (
     <div className='container'>

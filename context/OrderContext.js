@@ -77,7 +77,7 @@ export function OrderProvider({ children }) {
 
       return data;
     } catch (err) {
-      console.error("Ürün silme hatası:", err);
+      console.error("error", err);
     }
   };
 
@@ -126,7 +126,7 @@ export function OrderProvider({ children }) {
 
       return data;
     } catch (err) {
-      console.error("Ürün ekleme hatası:", err);
+      console.error("error", err);
     }
   };
 
@@ -138,7 +138,7 @@ export function OrderProvider({ children }) {
               const {data} = await getOrdersByUser(user?.id);
               setOrders(data);
           } catch (error) {
-              console.error('Error fetching orders:', error);
+              console.error('error', error);
           }
       };
 

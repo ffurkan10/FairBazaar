@@ -8,9 +8,6 @@ export async function GET(req) {
   const email = searchParams.get("email")
   const password = searchParams.get("password")
 
-  console.log("GET /api/auth - email:", email, "password:", password);
-  
-
   if (!email || !password) {
     return NextResponse.json(
       { message: "Missing credentials" },
@@ -19,8 +16,6 @@ export async function GET(req) {
   }
 
   const user = db.users.find((u) => u.email === email && u.password === password)
-
-  console.log("User found:", user);
 
   if (!user) {
     return NextResponse.json(

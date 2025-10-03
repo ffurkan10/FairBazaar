@@ -34,7 +34,7 @@ export function CartProvider({ children }) {
             setCart(data[0].products);
           }
         } catch (err) {
-          console.error("Sepet senkronizasyon hatası:", err);
+          console.error("Sepet hatası", err);
         }
       };
       syncCart();
@@ -73,8 +73,6 @@ export function CartProvider({ children }) {
     if (user) {
       const userCart = await fetchUserCart(user.id);
       if (userCart) {
-        console.log(userCart.id, { products: updated });
-        
         await updateCart(userCart.id, { products: updated });
       }
     }
@@ -82,8 +80,6 @@ export function CartProvider({ children }) {
 
   //! Miktar güncelleme
   const updateQuantity = async (id, quantity) => {
-    console.log(id, quantity);
-    
     const updated = cart.map((item) =>
       item.id === id ? { ...item, quantity: Math.max(quantity, 1) } : item
     );

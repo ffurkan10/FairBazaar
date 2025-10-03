@@ -16,8 +16,6 @@ const OrderUpdateModal = () => {
 
     const handleSubmit = () => {
         if (selectedOrder && selectedProduct) {
-          console.log("Adding product to order:", selectedOrder, selectedProduct);
-          
           addProductToOrder(selectedOrder.id, selectedProduct);
         }
     }
