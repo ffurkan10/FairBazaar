@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js E-Commerce App
 
-## Getting Started
+Bu proje **Next.js (App Router)** ve **JSON Server** kullanılarak geliştirilmiş basit bir e-ticaret uygulamasıdır.  
+Uygulama ürün listeleme, sepet, favoriler, kullanıcı giriş kontrolü ve sipariş yönetimi gibi temel e-ticaret özelliklerini barındırır.  
 
-First, run the development server:
+---
 
+## Özellikler
+
+- **Ürün Listeleme**
+  - FakeStore API üzerinden ürünler çekilir. (Vercel localhosta ulaşamadığı için fetch hatası veriyor. Bu yüzden server taraflı isteği de kullanmış olmak için          GetServerSide kullandım ve direkt fakestoreapiye istek attım. Client taraflı istek de atılabilir.)
+  - Kategori bazlı filtreleme yapılabilir.
+  - Detay sayfasında tek ürün görüntülenebilir.
+
+- **Authentication**
+  - JSON Server'da tanımlı kullanıcılarla login.
+  - Login sonrası `AuthContext` içinde kullanıcı bilgileri saklanır.
+  - Kullanıcıya özel favoriler ve sepet yönetimi.
+
+- **Sepet Yönetimi (Cart)**
+  - Ürünler sepete eklenebilir, miktar güncellenebilir veya çıkarılabilir.
+  - LocalStorage ile persist edilir.
+  - Kullanıcı login olduğunda JSON Server ile senkronize edilir (`carts` tablosu).
+
+- **Favoriler**
+  - Ürünler favorilere eklenebilir veya çıkarılabilir.
+  - LocalStorage persist.
+  - Kullanıcı login olduğunda JSON Server ile senkronize edilir (`users.favorites` alanı).
+
+- **Sipariş Yönetimi**
+  - Kullanıcı checkout yaptığında sipariş kaydedilir (`orders` tablosu).
+  - Sipariş geçmişi profil sayfasında görüntülenebilir.
+  - Sipariş detayları ürünlerle birlikte listelenir.
+
+---
+
+## Kullanılan Teknolojiler
+
+- [Next.js 13+ (App Router)](https://nextjs.org/)
+- [React 18](https://react.dev/)
+- [TailwindCSS](https://tailwindcss.com/) (UI)
+- [Axios](https://axios-http.com/) (API istekleri)
+- [JSON Server](https://github.com/typicode/json-server) (fake backend)
+
+## Kurulum
+
+### Klonlama
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone [https://github.com/kullanici/ecommerce-nextjs.git](https://github.com/ffurkan10/FairBazaar.git)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Bağımlılıkları yükle:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Next.js uygulamasını başlat:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Tarayıcıda aç:
+http://localhost:3000
