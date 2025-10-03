@@ -1,13 +1,12 @@
 import ProductContent from '@/components/home/ProductContent';
 import HomeHeroSlider from '@/components/sliders/HomeHeroSlider';
 import Spinner from '@/components/spinner';
-import { getProducts } from '@/lib/api';
-import GetServerSide from '@/lib/getServerSide';
+import GetProducts from '@/lib/GetProducts';
 import React from 'react'
 
 const Home = async () => {
 
-  const data = await GetServerSide(`http://localhost:3001/products`);
+  const data = await GetProducts();
 
   console.log(data);
   

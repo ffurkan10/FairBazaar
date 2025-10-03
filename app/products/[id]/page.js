@@ -5,10 +5,11 @@ import React from 'react'
 import { FaStar } from 'react-icons/fa';
 import ReviewSummary from '@/components/chart/ReviewSummary';
 import ProductUserAndWishControl from '@/components/product/ProductUserAndWishControl';
+import GetProducts from '@/lib/GetProducts';
 
 export async function generateMetadata({ params }) {
   const { id } = await params
-  const {data} = await getProductById(id);
+  const data = await GetProducts(id);
   
   console.log("meta id",id);
   console.log("meta data",data);
@@ -26,7 +27,7 @@ export async function generateMetadata({ params }) {
 
 const ProductDetail = async ({params}) => {
   const { id } = await params
-  const {data} = await getProductById(id);
+  const data = await GetProducts(id);
 
   console.log("page id",id);
   console.log("page data",data);
