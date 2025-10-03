@@ -1,11 +1,16 @@
 import ProductContent from '@/components/home/ProductContent';
 import HomeHeroSlider from '@/components/sliders/HomeHeroSlider';
+import Spinner from '@/components/spinner';
 import { getProducts } from '@/lib/api';
 import React from 'react'
 
 const Home = async () => {
 
   const {data} = await getProducts();
+
+  if(!data) {
+    return <div className='container pt-10'><Spinner /></div>
+  }
 
   return (
     <div className='container pt-10'>
