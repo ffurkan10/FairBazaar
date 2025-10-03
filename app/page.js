@@ -6,7 +6,7 @@ import React from 'react'
 
 const Home = async () => {
 
-  const {data} = await getProducts();
+  const {data} = await GetServerSide(`https://localhost:3001/products`);
 
   if(!data) {
     return <div className='container pt-10'><Spinner /></div>
