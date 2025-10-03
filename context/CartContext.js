@@ -28,6 +28,10 @@ export function CartProvider({ children }) {
           if ((!data || data?.[0]?.products?.length === 0 || !data.length) && cart.length > 0) {
             //! Eğer user için db de sepet yoksa localStoragedaki cartı kaydet
             await addNewCart({ userId: user.id, products: cart });
+            localStorage.removeItem("cart");
+          } else if (data && data.length > 0) {
+            //! Eğer user için db de sepet varsa onu al local e kaydet
+            setCart(data[0].products);
           }
         } catch (err) {
           console.error("Sepet senkronizasyon hatası:", err);
@@ -69,6 +73,8 @@ export function CartProvider({ children }) {
     if (user) {
       const userCart = await fetchUserCart(user.id);
       if (userCart) {
+        console.log(userCart.id, { products: updated });
+        
         await updateCart(userCart.id, { products: updated });
       }
     }
@@ -76,6 +82,8 @@ export function CartProvider({ children }) {
 
   //! Miktar güncelleme
   const updateQuantity = async (id, quantity) => {
+    console.log(id, quantity);
+    
     const updated = cart.map((item) =>
       item.id === id ? { ...item, quantity: Math.max(quantity, 1) } : item
     );
@@ -105,7 +113,7 @@ export function CartProvider({ children }) {
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, updateQuantity, clearCart, total, checkout, setCheckout }}
+      value={{ cart, addToCart, removeFromCart, updateQuantity, clearCart, total, checkout, setCheckout, setCart }}
     >
       {children}
     </CartContext.Provider>

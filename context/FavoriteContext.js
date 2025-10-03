@@ -26,6 +26,7 @@ export function FavoriteProvider({ children }) {
         //! Kullanıcının favorileri yoksa localden alıp apiye kaydetme yeri
         if ((!user.favorites || user.favorites.length === 0) && favorites.length > 0) {
           await updateUser(user.id, { favorites });
+          localStorage.removeItem("favorites");
         } else {
           //! Kullanıcının favorileri varsa api den alıp local e kaydetme yeri
           setFavorites(user.favorites);
@@ -59,7 +60,7 @@ export function FavoriteProvider({ children }) {
 
   return (
     <FavoriteContext.Provider
-      value={{ favorites, addToFavorites, removeFromFavorites }}
+      value={{ favorites, addToFavorites, removeFromFavorites, setFavorites }}
     >
       {children}
     </FavoriteContext.Provider>

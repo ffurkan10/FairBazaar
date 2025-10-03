@@ -2,6 +2,8 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { useCart } from "./CartContext";
+import { useFavorite } from "./FavoriteContext";
 
 const AuthContext = createContext();
 
@@ -29,6 +31,7 @@ export function AuthProvider({ children }) {
       router.push('/login');
       setUser(null);
       setIsAuthenticated(false);
+      localStorage.clear();
     } catch (error) {
       console.error("Logout failed:", error);
     }

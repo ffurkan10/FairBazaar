@@ -1,12 +1,18 @@
 "use client"
 import { useAuth } from '@/context/AuthContext';
+import { useCart } from '@/context/CartContext';
+import { useFavorite } from '@/context/FavoriteContext';
 import React from 'react'
 
 const LogoutButton = () => {
     const { logoutUser } = useAuth();
+    const { setCart } = useCart();
+    const { setFavorites } = useFavorite();
 
     const handleLogout =  () => {
         logoutUser();
+        setCart([]);
+        setFavorites([]);
     };
 
   return (
